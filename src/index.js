@@ -2,7 +2,8 @@ const express = require('express');
 const mongoose = require('mongoose');
 require("dotenv").config();
 const userRoutes = require("./routes/user");
-const cors = require('cors')
+const cors = require('cors');
+const cursoRoutes = require("./routes/curso");
 
 const app = express();
 const port = process.env.PORT || 9000;
@@ -11,7 +12,8 @@ app.use(cors())
 
 //middleware
 app.use(express.json());
-app.use('/api', userRoutes)
+app.use('/api', userRoutes);
+app.use('/api', cursoRoutes);
 
 // Configurar cabeceras y cors
 app.use((req, res, next) => {
